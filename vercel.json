@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "vercel one more time",
+  "name": "swagger1",
   "builds": [
     {
       "src": "src/index.ts",
