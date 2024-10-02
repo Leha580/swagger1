@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "swagger1",
+  "name": "swagger1 bla",
   "builds": [
     {
       "src": "src/index.ts",
