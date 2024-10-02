@@ -41,7 +41,8 @@ app.post('/videos', (req: Request, res: Response) => {
         canBeDownloaded: true,
         minAgeRestriction: null,
         createdAt: "2024-10-02T06:25:23.544Z",
-        publicationDate: "2024-10-02T06:25:23.544Z",
+        //publicationDate: "2024-10-02T06:25:23.544Z",
+        publicationDate: req.body.publicationDate,
         availableResolutions: [
             "P144"
         ]
