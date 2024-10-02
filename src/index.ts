@@ -16,10 +16,10 @@ const videos = [
         "id": 0,
         "title": "string",
         "author": "string",
-        /*"canBeDownloaded": true,
+        "canBeDownloaded": true,
         "minAgeRestriction": null,
         "createdAt": "2024-10-02T06:25:23.544Z",
-        "publicationDate": "2024-10-02T06:25:23.544Z",*/
+        "publicationDate": "2024-10-02T06:25:23.544Z",
         "availableResolutions": [
             "P144"
         ]
@@ -37,8 +37,12 @@ app.post('/videos', (req: Request, res: Response) => {
     const newVideo = {
         id: +(new Date()),
         title: req.body.title,
-        author: 'name',
-        "availableResolutions": [
+        author: "string",
+        canBeDownloaded: true,
+        minAgeRestriction: null,
+        createdAt: "2024-10-02T06:25:23.544Z",
+        publicationDate: "2024-10-02T06:25:23.544Z",
+        availableResolutions: [
             "P144"
         ]
     }
