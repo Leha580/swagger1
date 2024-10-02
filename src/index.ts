@@ -28,8 +28,22 @@ const videos = [
 
 app.delete('/testing/all-data', (req: Request, res: Response) => {
 
+    //const data = []
     res.send(204)
 })
+/*productsRouter.post('/videos', (req: Request, res: Response) => {
+    const newProduct = {
+        id: +(new Date()),
+        title: req.body.title
+    }
+    products.push(newProduct)
+    res.status(201).send(newProduct)
+})*/
+app.get('/videos', (req: Request, res: Response) => {
+    res.send(videos).status(200)
+})
+
+
 app.use('/products', productsRouter)
 app.use('/addresses', addressesRouter)
 
