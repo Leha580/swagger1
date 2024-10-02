@@ -36,13 +36,14 @@ app.delete('/testing/all-data', (req: Request, res: Response) => {
 app.post('/videos', (req: Request, res: Response) => {
     const newVideo = {
         id: +(new Date()),
-        title: req.body.title,
+        //title: req.body.title,
+        title: 'ss',
         author: "string",
         canBeDownloaded: true,
         minAgeRestriction: null,
         createdAt: "2024-10-02T06:25:23.544Z",
-        //publicationDate: "2024-10-02T06:25:23.544Z",
-        publicationDate: req.body.publicationDate,
+        publicationDate: "2024-10-03T06:25:23.544Z",
+        //publicationDate: req.body.publicationDate,
         availableResolutions: [
             "P144"
         ]
