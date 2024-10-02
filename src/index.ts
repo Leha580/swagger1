@@ -18,10 +18,12 @@ const videos = [
         "author": "string",
         "canBeDownloaded": true,
         "minAgeRestriction": null,
-        "createdAt": "2024-10-02T06:25:23.544Z",
-        "publicationDate": "2024-10-02T06:25:23.544Z",
+        //"createdAt": "2024-10-02T06:25:23.544Z",
+        //"publicationDate": "2024-10-02T06:25:23.544Z",
+        "createdAt": new Date().toISOString(),
+        "publicationDate": new Date().toISOString(),
         "availableResolutions": [
-            "P144"
+            "P144", "P144", "P240", "P360", "P480", "P720", "P1080", "P1440", "P2160"
         ]
     }
 ]
@@ -34,6 +36,19 @@ app.delete('/testing/all-data', (req: Request, res: Response) => {
 
 
 app.post('/videos', (req: Request, res: Response) => {
+
+    let title = req.body.title
+    if(!title || typeof title !== 'string' || !title.trim() || title.length > 40) {
+        res.status(400).send({
+            errorsMessages: [{
+             message: "incorrect title",
+             field: "title"
+            }]
+        })
+        return
+    }
+
+
     const newVideo = {
         id: +(new Date()),
         //title: req.body.title,
@@ -50,23 +65,50 @@ app.post('/videos', (req: Request, res: Response) => {
     }
     videos.push(newVideo)
     res.status(202).send(newVideo)
+
+
+
+
 })
 app.get('/videos', (req: Request, res: Response) => {
-    res.send(videos).status(200)
+    res.status(200).send(videos)
 })
 app.get('/videos/:id', (req: Request, res: Response) => {
 
     let video = videos.find(p => p.id === +req.params.id)
     if (video) {
-        res.send(video).status(200)
+        res.status(200).send(video)
     } else {
         res.send(404)
     }
 })
 
 
-app.use('/products', productsRouter)
-app.use('/addresses', addressesRouter)
+app.put('/videos/:id', (req: Request, res: Response) => {
+    let title = req.body.title
+    if(!title || typeof title !== 'string' || !title.trim() || title.length > 40) {
+        res.status(400).send({
+            errorsMessages: [{
+                message: "incorrect title",
+                field: "title"
+            }]
+        })
+        return
+    }
+
+
+
+
+    let product = videos.find(p => p.id === +req.params.id)
+    if (product) {
+        product.title = req.body.title
+        res.send(product)
+    } else {
+        res.send(404)
+    }
+})
+
+
 
 
 // start app
